@@ -6,8 +6,8 @@ const { userRouter } = require("./routers/router");
 const mongoose = require("mongoose");
 
 const allowedOrigins = [
-  "http://localhost:3000/",
   "https://thehalotask.vercel.app/",
+  "http://localhost:3000/",
 ];
 
 const corsOptions = {
