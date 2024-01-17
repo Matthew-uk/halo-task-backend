@@ -5,10 +5,7 @@ const dotenv = require("dotenv");
 const { userRouter } = require("./routers/router");
 const mongoose = require("mongoose");
 
-const allowedOrigins = [
-  "https://thehalotask.vercel.app/",
-  "http://localhost:3000/",
-];
+const allowedOrigins = ["*"];
 
 const corsOptions = {
   origin: function (origin, callback) {
