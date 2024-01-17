@@ -5,23 +5,7 @@ const dotenv = require("dotenv");
 const { userRouter } = require("./routers/router");
 const mongoose = require("mongoose");
 
-const allowedOrigins = ["*"];
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true,
-  optionsSuccessStatus: 204,
-  allowedHeaders: "Content-Type,Authorization",
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 dotenv.config();
 
