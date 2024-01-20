@@ -38,4 +38,13 @@ const getTask = expressAsyncHandler(async (req, res) => {
   });
 });
 
-module.exports = { createTask, getTask };
+const updateTask = expressAsyncHandler(async (req, res) => {
+  const { id } = req.query;
+  const updateData = { pending: false };
+  const currentTask = await taskModel.findByIdAndUpdate(id, updateData, {
+    new: true,
+  });
+  res.status(200).json({ id, currentTask });
+});
+
+module.exports = { createTask, getTask, updateTask };

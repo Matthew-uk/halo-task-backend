@@ -1,7 +1,11 @@
 const express = require("express");
 const userRouter = express.Router();
 const { signUp, login, getUser } = require("./../controllers/userController");
-const { createTask, getTask } = require("./../controllers/taskController");
+const {
+  createTask,
+  getTask,
+  updateTask,
+} = require("./../controllers/taskController");
 
 const { protect } = require("./../middlewares/protect");
 
@@ -15,6 +19,10 @@ const { protect } = require("./../middlewares/protect");
 userRouter.route("/register").post(signUp);
 userRouter.route("/login").post(login);
 userRouter.route("/user").get(protect, getUser);
-userRouter.route("/task").post(protect, createTask).get(protect, getTask);
+userRouter
+  .route("/task")
+  .post(protect, createTask)
+  .get(protect, getTask)
+  .patch(updateTask);
 
 module.exports = { userRouter };
