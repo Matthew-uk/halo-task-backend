@@ -24,7 +24,7 @@ const taskSchema = new mongoose.Schema(
     },
     pending: {
       type: Boolean,
-      required: true,
+      default: true,
     },
   },
   { timestamps: true }
