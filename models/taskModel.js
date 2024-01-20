@@ -22,6 +22,10 @@ const taskSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
+    pending: {
+      type: Boolean,
+      required: true,
+    },
   },
   { timestamps: true }
 );
