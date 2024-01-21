@@ -22,6 +22,10 @@ const notesSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
+    bgColor: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );

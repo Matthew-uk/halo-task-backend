@@ -2,12 +2,13 @@ const expressAsyncHandler = require("express-async-handler");
 const notesModel = require("./../models/noteModel");
 
 const handleCreateNote = expressAsyncHandler(async (req, res) => {
-  const { title, description, userId, starred } = req.body;
+  const { title, description, userId, starred, bgColor } = req.body;
   const newNote = await notesModel.create({
-    title: title,
-    description: description,
+    title,
+    description,
     userId,
     starred,
+    bgColor,
   });
   res.status(200).json(newNote);
 });
