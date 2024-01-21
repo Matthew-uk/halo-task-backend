@@ -1,8 +1,5 @@
 const expressAsyncHandler = require("express-async-handler");
 const taskModel = require("./../models/taskModel");
-const userModel = require("./../models/userModel");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 
 const createTask = expressAsyncHandler(async (req, res) => {
   const { taskName, taskDescription, userId, date, important } = req.body;

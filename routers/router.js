@@ -6,6 +6,10 @@ const {
   getTask,
   updateTask,
 } = require("./../controllers/taskController");
+const {
+  handleCreateNote,
+  handleGetNote,
+} = require("./../controllers/notesController");
 
 const { protect } = require("./../middlewares/protect");
 
@@ -24,5 +28,9 @@ userRouter
   .post(protect, createTask)
   .get(protect, getTask)
   .patch(updateTask);
+userRouter
+  .route("/notes")
+  .post(protect, handleCreateNote)
+  .get(protect, handleGetNote);
 
 module.exports = { userRouter };
