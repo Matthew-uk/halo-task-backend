@@ -5,11 +5,13 @@ const {
   createTask,
   getTask,
   updateTask,
+  handleDeleteTask,
 } = require("./../controllers/taskController");
 const {
   handleCreateNote,
   handleGetNote,
   handleStarred,
+  handleDeleteNote,
 } = require("./../controllers/notesController");
 
 const { protect } = require("./../middlewares/protect");
@@ -28,11 +30,13 @@ userRouter
   .route("/task")
   .post(protect, createTask)
   .get(protect, getTask)
-  .patch(updateTask);
+  .patch(updateTask)
+  .delete(protect, handleDeleteTask);
 userRouter
   .route("/notes")
   .post(protect, handleCreateNote)
   .get(protect, handleGetNote)
-  .patch(protect, handleStarred);
+  .patch(protect, handleStarred)
+  .delete(protect, handleDeleteNote);
 
 module.exports = { userRouter };

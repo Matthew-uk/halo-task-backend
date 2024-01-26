@@ -44,4 +44,14 @@ const updateTask = expressAsyncHandler(async (req, res) => {
   res.status(200).json({ id, currentTask });
 });
 
-module.exports = { createTask, getTask, updateTask };
+const handleDeleteTask = expressAsyncHandler(async (req, res) => {
+  const { id } = req.query;
+  try {
+    const deleteTask = await taskModel.deleteOne({ _id: id });
+    res.status(200).json(deleteTask);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+});
+
+module.exports = { createTask, getTask, updateTask, handleDeleteTask };

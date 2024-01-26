@@ -33,4 +33,19 @@ const handleStarred = expressAsyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { handleCreateNote, handleGetNote, handleStarred };
+const handleDeleteNote = expressAsyncHandler(async (req, res) => {
+  const { id } = req.query;
+  try {
+    const deleteNote = await notesModel.deleteOne({ _id: id });
+    res.status(200).json(deleteNote);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+});
+
+module.exports = {
+  handleCreateNote,
+  handleGetNote,
+  handleStarred,
+  handleDeleteNote,
+};
