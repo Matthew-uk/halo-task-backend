@@ -9,6 +9,7 @@ const {
 const {
   handleCreateNote,
   handleGetNote,
+  handleStarred,
 } = require("./../controllers/notesController");
 
 const { protect } = require("./../middlewares/protect");
@@ -31,6 +32,7 @@ userRouter
 userRouter
   .route("/notes")
   .post(protect, handleCreateNote)
-  .get(protect, handleGetNote);
+  .get(protect, handleGetNote)
+  .patch(protect, handleStarred);
 
 module.exports = { userRouter };
