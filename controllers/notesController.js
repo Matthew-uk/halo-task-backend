@@ -23,7 +23,7 @@ const handleStarred = expressAsyncHandler(async (req, res) => {
   const { id } = req.query;
   try {
     const note = await notesModel.findOneAndUpdate(
-      { userId: id },
+      { _id: id },
       { starred: true },
       { new: true }
     );
