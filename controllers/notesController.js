@@ -20,11 +20,11 @@ const handleGetNote = expressAsyncHandler(async (req, res) => {
 });
 
 const handleStarred = expressAsyncHandler(async (req, res) => {
-  const { id } = req.query;
+  const { id, value } = req.query;
   try {
     const note = await notesModel.findOneAndUpdate(
       { _id: id },
-      { starred: true },
+      { starred: value },
       { new: true }
     );
     res.status(200).json(note);
